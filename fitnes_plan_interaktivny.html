@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7eaf0">
+<title>Мой домашний фитнес · 4 недели</title>
+<style>
+:root{--bg:#fff9fb;--card:#fff;--ink:#302631;--muted:#786b76;--pink:#d96f9e;--pink2:#f8e4ed;--rose:#b84e7d;--green:#43876b;--line:#f0dce6;--shadow:0 8px 28px #6d36500d}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#fff6fa,#fbf8fb 45%,#fff);color:var(--ink);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{max-width:780px;margin:auto;padding:18px 14px 40px}.hero{padding:24px;border-radius:26px;background:linear-gradient(135deg,#f8dce9,#f9eef4 58%,#f3e9f6);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#995477;font-weight:800}.hero h1{font-size:30px;line-height:1.12;margin:8px 0}.hero p{margin:8px 0;color:#675461}.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}.chip{font-size:12px;background:#ffffffb8;border:1px solid #fff;padding:6px 10px;border-radius:99px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:13px 0}.stat,.panel,.day,.exercise,.weekcard{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.stat{padding:12px;text-align:center}.stat b{display:block;font-size:20px;color:var(--rose)}.stat span{font-size:11px;color:var(--muted)}
+.progress{height:9px;background:#f2e6ec;border-radius:99px;overflow:hidden;margin-top:8px}.progress i{display:block;height:100%;background:linear-gradient(90deg,#d96f9e,#9d78b4);width:0;transition:.25s}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:17px 0}.tabs button,.weektabs button{border:1px solid var(--line);background:#fff;border-radius:13px;padding:10px 5px;color:var(--muted);font-weight:700;cursor:pointer}.tabs button.active,.weektabs button.active{background:var(--pink2);border-color:#e9b5cc;color:#8e3d66}
+h2{font-size:21px;margin:20px 2px 6px}.sub{color:var(--muted);font-size:13px;margin:0 2px 12px}.day{padding:15px;margin:12px 0}.dayhead{display:flex;justify-content:space-between;gap:10px;align-items:center}.tag{font-size:11px;font-weight:800;color:#965174;background:#faeaf1;border-radius:99px;padding:5px 9px;white-space:nowrap}
+.exercise{display:grid;grid-template-columns:84px 1fr;gap:12px;padding:11px;margin:10px 0;box-shadow:none}.art{height:82px;border-radius:13px;background:linear-gradient(145deg,#f9e9f0,#f1eaf6);display:flex;align-items:center;justify-content:center}.art svg{width:75px;height:68px}.exercise h3{font-size:15px;margin:0 0 2px}.dose{font-size:12px;color:#995477;font-weight:800;margin-bottom:4px}.exercise p{font-size:12px;color:var(--muted);margin:0}.exercise label{display:flex;align-items:center;gap:7px;margin-top:8px;font-size:12px;font-weight:700;color:var(--green)}input[type=checkbox]{accent-color:var(--green);width:17px;height:17px}
+.tip{background:#f8f2f7;border-radius:14px;padding:12px;font-size:12px;color:#68596a;margin-top:10px}.weektabs{display:flex;gap:7px;margin:12px 0}.weektabs button{flex:1}.trackerrow{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 2px;border-bottom:1px solid var(--line)}.trackerrow small{display:block;color:var(--muted)}.trackerrow label{display:flex;align-items:center;gap:7px;font-size:12px}
+.fields{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.fields label{font-size:12px;color:var(--muted)}.fields input{display:block;width:100%;padding:10px;border:1px solid var(--line);border-radius:11px;margin-top:4px;font-size:15px}
+button{font:inherit}.action{background:var(--rose);color:white;border:0;border-radius:13px;padding:11px 14px;font-weight:800;cursor:pointer}.secondary{background:#fff;border:1px solid var(--line);color:var(--rose);border-radius:12px;padding:9px 12px;font-weight:700;cursor:pointer}
+.hidden{display:none!important}.footer{font-size:11px;color:var(--muted);text-align:center;margin:20px 0 0}
+@media(max-width:480px){.hero h1{font-size:26px}.exercise{grid-template-columns:72px 1fr;gap:9px;padding:9px}.art{height:76px}.tabs button{font-size:12px}.stats{gap:6px}.stat{padding:9px 4px}}
+</style>
+</head>
+<body><main class="wrap">
+<section class="hero">
+<div class="eyebrow">Твой личный план · 4 недели</div>
+<h1>Домашний фитнес<br>в своём темпе ♡</h1>
+<p>3 тренировки в неделю · 30–40 минут · акцент на ягодицы и мышцы живота</p>
+<div class="chips"><span class="chip">Без гантелей</span><span class="chip">Без прыжков</span><span class="chip">Короткие резинки</span><span class="chip">Коврик + эспандер</span></div>
+</section>
+<div class="stats">
+<div class="stat"><b id="doneCount">0/12</b><span>тренировок</span></div>
+<div class="stat"><b id="percent">0%</b><span>программы</span></div>
+<div class="stat"><b>4 недели</b><span>план занятий</span></div>
+</div>
+<div class="progress"><i id="bar"></i></div>
+<nav class="tabs">
+<button class="active" data-tab="plan">Тренировки</button><button data-tab="calendar">Календарь</button><button data-tab="progress">Замеры</button><button data-tab="guide">Памятка</button>
+</nav>
+<section id="plan">
+<div class="day">
+<div class="dayhead"><div><b>ПОНЕДЕЛЬНИК</b><div class="sub">Ягодицы · бёдра · живот</div></div><span class="tag">35–40 мин</span></div>
+<div id="mon"></div>
+</div>
+<div class="day">
+<div class="dayhead"><div><b>СРЕДА</b><div class="sub">Спина · руки · живот</div></div><span class="tag">30–35 мин</span></div>
+<div id="wed"></div>
+</div>
+<div class="day">
+<div class="dayhead"><div><b>ПЯТНИЦА</b><div class="sub">Всё тело · спокойное кардио</div></div><span class="tag">35–40 мин</span></div>
+<div id="fri"></div>
+</div>
+</section>
+<section id="calendar" class="hidden">
+<h2>Календарь выполнения</h2><p class="sub">Отмечай тренировку после выполнения. Отметки сохраняются на этом устройстве.</p>
+<div class="weektabs" id="weektabs"></div><div class="panel" style="padding:14px" id="weeklist"></div>
+</section>
+<section id="progress" class="hidden">
+<h2>Мои замеры</h2><p class="sub">Записывай показатели раз в неделю, желательно в одинаковых условиях.</p>
+<div class="panel" style="padding:14px">
+<div class="fields"><label>Вес, кг<input id="weight" type="number" step=".1" placeholder="—"></label><label>Талия, см<input id="waist" type="number" step=".5" placeholder="—"></label><label>Бёдра, см<input id="hips" type="number" step=".5" placeholder="—"></label></div>
+<p style="font-size:12px;color:var(--muted)">Показатели сохраняются локально в браузере на этом устройстве.</p><button class="action" id="saveMeasures">Сохранить замеры</button><span id="saved" style="font-size:12px;color:var(--green);margin-left:8px"></span>
+</div>
+<h2>Прогресс по неделям</h2><div class="panel" style="padding:14px" id="weeklyProgress"></div>
+</section>
+<section id="guide" class="hidden">
+<h2>Как заниматься</h2>
+<div class="panel" style="padding:14px">
+<b>Перед тренировкой — 5 минут</b><p class="sub">Ходьба на месте, круги плечами и тазом, неглубокие приседания, лёгкие движения ногами.</p>
+<b>Отдых между подходами</b><p class="sub">Обычно 45–60 секунд. Отдыхай дольше, если дыхание ещё не восстановилось.</p>
+<b>Прогресс на 4 недели</b><p class="sub">1-я неделя: 2 подхода, освоить технику. 2-я: 2–3 подхода. 3-я: до 3 подходов и +2 повторения при хорошем самочувствии. 4-я: сохранить технику, немного увеличить сопротивление только если легко.</p>
+<b>Твой инвентарь</b><p class="sub">Коврик, короткие замкнутые резинки, пружинный тренажёр с использованием по инструкции производителя, рельефный массажный ролик. Гантелей и степ-платформы нет. Скакалка не используется для прыжков.</p>
+<b>Массажный ролик</b><p class="sub">Это не упражнение для похудения и не лечение отёков. При желании мягко прокатывай мышцы бёдер или икр, не дави на суставы, поясницу, кости, синяки, болезненные или отёчные участки.</p>
+<div class="tip">Важно: прекращай движение при боли, головокружении или необычном дискомфорте. Не тренируйся через боль. Если есть медицинские ограничения, сначала согласуй нагрузку со специалистом.</div>
+</div>
+</section>
+<p class="footer">Твой план — ориентир, а не соревнование. Регулярность важнее идеального выполнения ♡</p>
+</main>
+<script>
+const workouts={
+mon:[
+["Ягодичный мостик","2–3 × 15–20","Лёжа на спине, колени согнуты. Подними таз, сожми ягодицы на 2 секунды. Не прогибай поясницу.","bridge"],
+["Приседания с резинкой","2–3 × 12–15","Резинка чуть выше колен. Отводи таз назад, колени направляй по линии носков.","squat"],
+["Махи ногой назад","2–3 × 12–15 на ногу","На четвереньках поднимай согнутую ногу без раскачивания таза и прогиба спины.","kick"],
+["Ракушка с резинкой","2 × 15 на сторону","Лёжа на боку, колени согнуты, стопы вместе. Раскрывай верхнее колено, не разворачивая таз.","clam"],
+["Сведение бёдер с пружинным тренажёром","2 × 12–15","Только в положении, предусмотренном инструкцией тренажёра. Сжимай плавно, без рывков.","squeeze"],
+["Dead bug","2 × 10–12 на сторону","На спине опускай противоположные руку и ногу. Сохраняй поясницу устойчивой.","core"]],
+wed:[
+["Подъём рук W лёжа на животе","2–3 × 12","Лёжа на животе, локти согнуты буквой W. Слегка подними руки и сведи лопатки, не задирай голову.","back"],
+["Отжимания от стены","2–3 × 12–15","Ладони на стене на уровне груди. Сгибай локти, приближая грудь к стене; корпус прямой.","push"],
+["Разведение короткой резинки","2 × 12–15","Резинка на запястьях, локти согнуты. Разводи предплечья наружу, плечи не поднимай.","arms"],
+["Сведение рук пружинным тренажёром","2 × 12","Только если инструкция допускает такое положение. Без боли и рывков.","squeeze"],
+["Bird dog","2 × 10 на сторону","На четвереньках вытягивай противоположные руку и ногу. Не раскачивай таз.","bird"],
+["Планка с колен","2 × 20 секунд","Опора на предплечья и колени. Напряги живот, не проваливай поясницу.","plank"]],
+fri:[
+["Ходьба с подъёмом коленей","3 × 45 секунд","Шагай на месте, поднимай колени поочерёдно и активно двигай руками. Без прыжков.","march"],
+["Приседания сумо","2–3 × 12–15","Стопы шире плеч, носки немного наружу. Колени следуют за носками.","squat"],
+["Ягодичный мостик с резинкой","2–3 × 15–20","Резинка выше колен. Поднимай таз и слегка разводи колени, сохраняя контроль.","bridge"],
+["Боковые шаги с резинкой","2 × 10–12 на сторону","Резинка выше колен или вокруг голеней. Слегка согни колени и делай небольшие шаги.","steps"],
+["Колено к противоположному локтю стоя","2 × 12 на сторону","Поднимай колено и мягко поворачивай корпус. Не тяни шею и не делай рывков.","march"],
+["Боковая планка с колен","2 × 15–20 секунд на сторону","Опирайся на предплечье и согнутые колени. Подними таз, удерживая корпус ровно.","plank"]]
+};
+function svg(type){let body='<circle cx="47" cy="14" r="6" fill="#d96f9e"/>';let lines='';
+if(type==="bridge") lines='<path d="M39 23 L26 38 L60 38 L70 27" />';
+else if(type==="squat") lines='<path d="M47 22 L47 39 L30 48 L25 62 M47 39 L62 48 L68 62"/>';
+else if(type==="clam") lines='<path d="M40 23 L27 42 L62 45 M62 45 L71 36"/>';
+else if(type==="core") lines='<path d="M40 23 L29 43 L59 43 M29 43 L15 27 M59 43 L72 24"/>';
+else if(type==="plank") lines='<path d="M40 23 L24 43 L62 43 L70 54"/>';
+else if(type==="kick"||type==="bird") lines='<path d="M40 23 L29 43 L57 43 M57 43 L72 29 M29 43 L20 54"/>';
+else if(type==="back") lines='<path d="M40 23 L47 42 M47 33 L23 27 M47 33 L70 27 M47 42 L36 60 M47 42 L59 60"/>';
+else lines='<path d="M40 23 L47 43 M47 31 L24 40 M47 31 L70 40 M47 43 L35 62 M47 43 L59 62"/>';
+return `<svg viewBox="0 0 94 78" fill="none" stroke="#594957" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">${body}${lines}<path d="M10 66H84" stroke="#d9b8c8" stroke-width="2"/></svg>`}
+function renderWorkout(id){document.getElementById(id).innerHTML=workouts[id].map((e,i)=>`<article class="exercise"><div class="art">${svg(e[3])}</div><div><h3>${i+1}. ${e[0]}</h3><div class="dose">${e[1]}</div><p>${e[2]}</p></div></article>`).join('')}
+["mon","wed","fri"].forEach(renderWorkout);
+let done=JSON.parse(localStorage.getItem("fitDone")||"[]"),week=1;
+function save(){localStorage.setItem("fitDone",JSON.stringify(done));update()}
+function update(){document.getElementById("doneCount").textContent=done.length+"/12";document.getElementById("percent").textContent=Math.round(done.length/12*100)+"%";document.getElementById("bar").style.width=(done.length/12*100)+"%";renderWeek();document.getElementById("weeklyProgress").innerHTML=[1,2,3,4].map(w=>`<p style="margin:8px 0">Неделя ${w}: <b>${done.filter(x=>Math.floor(x/3)+1===w).length}/3</b> тренировок</p>`).join("")}
+function renderWeek(){document.getElementById("weektabs").innerHTML=[1,2,3,4].map(w=>`<button class="${week===w?'active':''}" data-week="${w}">Неделя ${w}</button>`).join("");document.querySelectorAll("[data-week]").forEach(b=>b.onclick=()=>{week=+b.dataset.week;renderWeek()});document.getElementById("weeklist").innerHTML=["Понедельник · Ягодицы и живот","Среда · Руки и спина","Пятница · Всё тело"].map((n,i)=>{let id=(week-1)*3+i;return `<div class="trackerrow"><div><b>${n}</b><small>Тренировка ${id+1} из 12</small></div><label><input type="checkbox" data-done="${id}" ${done.includes(id)?"checked":""}> Готово</label></div>`}).join("");document.querySelectorAll("[data-done]").forEach(c=>c.onchange=()=>{let id=+c.dataset.done;done=c.checked?[...done,id]:done.filter(x=>x!==id);save()})}
+document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{document.querySelectorAll("[data-tab]").forEach(x=>x.classList.toggle("active",x===b));["plan","calendar","progress","guide"].forEach(id=>document.getElementById(id).classList.toggle("hidden",id!==b.dataset.tab))});
+document.getElementById("saveMeasures").onclick=()=>{["weight","waist","hips"].forEach(id=>localStorage.setItem(id,document.getElementById(id).value));document.getElementById("saved").textContent="Сохранено ✓"};
+["weight","waist","hips"].forEach(id=>{let v=localStorage.getItem(id);if(v!==null)document.getElementById(id).value=v});
+update();
+</script></body></html>
